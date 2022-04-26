@@ -26,7 +26,7 @@ function Signup(){
       data: "Registration is in progress...",
       type: "alert-warning",
     });
-    fetch(`${config.baseUrl}/register`, {
+    fetch('http://localhost:2000/api/register', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

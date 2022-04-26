@@ -1,10 +1,18 @@
- const avatars = [
+ const avatarsF = [
   {
     id: 1,
+    did: 1,
     name: 'Leanne Graham',
     username: 'Bret',
     email: 'Sincere@april.biz',
-    profession: 'Dentist'
+    profession: 'Dentist',
+
+    availability: {
+      startTime: '09:00',
+      endTime: '05:00',
+      days:'Monday to Friday'
+    },
+    loggedState: 'True'
   },
   {
     id: 2,
@@ -57,14 +65,21 @@
     profession: 'Dentist'
   },
   {
-    id: 5,
+    id: 9,
     name: 'Glenna Reichert',
     username: 'Delphine',
     email: 'Chaim_McDermott@dana.io',
     profession: 'Dentist'
+  },
+  {
+    id: 10,
+    name: 'Amanda Love',
+    username: 'Amanda',
+    email: 'Amanda_love.org',
+    profession: 'Nutrionist'
   }
 ];
 
 
 
-export default avatars;
+export default avatarsF;

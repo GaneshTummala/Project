@@ -40,7 +40,7 @@ const loading = {
         },
       } = this.props;
       try {
-        const response = await axios.get(`http://localhost:5000/api/resetPassword/${token}`);
+        const response = await axios.get('http://localhost:2000/api/resetPassword/${token}');
         // console.log(response);
         if (response.data.message === 'password reset link a-ok') {
           console.log("Response from reset ",response.data)
@@ -77,7 +77,7 @@ const loading = {
       } = this.props;
       try {
         const response = await axios.put(
-          'http://localhost:5000/api/updatePasswordViaEmail',
+          'http://localhost:2000/api/updatePasswordViaEmail',
           {
             username,
             password,

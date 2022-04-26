@@ -8,16 +8,18 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import {Link} from 'react-router-dom'
 import config from '../config'
+import { useLocation } from "react-router-dom"
+
 
 function Scheduler(props, loggedState) {
 
-
+  const location=useLocation();
+  console.log('location',location)
     const [prop, setProp] = useState({props});
     const [currentEvents, setCurrentEvents] = useState([]);
     const [modalShow, setModalShow] = useState(false);
     const [email, setEmail] = useState("");
     const [mobile, setMobile] = useState("");
-
 
     async function getAppointments(){
       return fetch(`${config.baseUrl}/appointments`, {
@@ -30,7 +32,6 @@ function Scheduler(props, loggedState) {
         return res.json(); 
     })
     }
-
 
     const loadAppointments = async () => {
       const appointments = await getAppointments();
@@ -47,9 +48,9 @@ function Scheduler(props, loggedState) {
 
 
     // const dates = { 'a': {'start': 6, 'end': 10}, 'b':{'start': 16, 'end': 21}}
-    console.log(prop);
+    console.log('prop____',prop);
     if(prop.props.location.hasOwnProperty("aboutProps") && prop.props.location.aboutProps.hasOwnProperty("name")){
-      console.log(props.location.aboutProps.name)
+      console.log('name',props.location.aboutProps.name)
     }else{
       console.log("Error");
     }
@@ -75,6 +76,7 @@ function Scheduler(props, loggedState) {
           return "PM"
         }
       }
+      {console.log('AboutProps',prop.props.location.aboutProps)}
 
       const renderSidebar = () => {
         return (
@@ -82,12 +84,12 @@ function Scheduler(props, loggedState) {
            
           <div className='scheduler-sidebar vh-100'>
             <div className='scheduler-sidebar-section'>
-              {props.location.hasOwnProperty("aboutProps") && props.location.aboutProps.hasOwnProperty("name")?
+              {location.hasOwnProperty("aboutProps") && location.aboutProps.hasOwnProperty("name")?
               <div>
                 <h2>Schedule an Appointment</h2>
-                <p>Doctor Name: Dr. {props.location.aboutProps.name}</p>
-                <p>Days Available: {props.location.aboutProps.availability}</p>
-                <p>Timings:  { (props.location.aboutProps.timings.start>12? props.location.aboutProps.timings.start-12 : props.location.aboutProps.timings.start) +" "+ AMPM(props.location.aboutProps.timings.start ) } to {props.location.aboutProps.timings.end-12+" "+ AMPM(props.location.aboutProps.timings.end ) }</p>
+                <p>Doctor Name: Dr. {location.aboutProps.name}</p>
+                <p>Days Available: {location.aboutProps.availability}</p>
+                <p>Timings:  { (location.aboutProps.timings.start>12? location.aboutProps.timings.start-12 : location.aboutProps.timings.start) +" "+ AMPM(location.aboutProps.timings.start ) } to {location.aboutProps.timings.end-12+" "+ AMPM(location.aboutProps.timings.end ) }</p>
               </div>
               :<div> <h2>Instruction</h2></div>}
               <ul>
@@ -108,9 +110,6 @@ function Scheduler(props, loggedState) {
             {/* { console.log(prop.props.history.goBack())  } */}
             
           </div>
-
-
-
           
         )
       }
@@ -135,7 +134,7 @@ function Scheduler(props, loggedState) {
         let calendarApi = selectInfo.view.calendar
         
         calendarApi.unselect() // clear date selection
-        let title = "Appointment with Dr. " + props.location.aboutProps.name  + " is fixed";
+        let title = "Appointment with Dr. " + location.aboutProps.name  + " is fixed";
         if (title) {
           calendarApi.addEvent({
             id: createEventId(),
@@ -186,8 +185,8 @@ function Scheduler(props, loggedState) {
 
       const handleEvents = (events) => {
         let did = 0;
-        if (props.location.hasOwnProperty("aboutProps") && props.location.aboutProps.hasOwnProperty("did")){
-          did = props.location.aboutProps.did;
+        if (location.hasOwnProperty("aboutProps") && location.aboutProps.hasOwnProperty("did")){
+          did = location.aboutProps.did;
         }
         if(did != 0)
         {addEvent(events, did);}
@@ -203,14 +202,14 @@ function Scheduler(props, loggedState) {
         var endDate = new Date(selectInfo.endStr);
         var eminutes = endDate.getMinutes();
         var ehours = endDate.getHours();
-        let availDays = prop.props.location.aboutProps.availability.split(',');
+        let availDays = location.aboutProps.availability.split(',');
         availDays.forEach((day) => {
           if(dayMapping(day) != sday){
             return false;
           }
         });
         console.log(availDays);
-        if(shours >= prop.props.location.aboutProps.timings.start && ehours<= prop.props.location.aboutProps.timings.end
+        if(shours >= location.aboutProps.timings.start && ehours<= prop.props.location.aboutProps.timings.end
            && currentEvents.length <= 0 && ehours-shours<=1){
           return true
         }else
@@ -285,9 +284,6 @@ function Scheduler(props, loggedState) {
                 <Button onClick={()=>{handleSubmit()}}> Continue </Button>
               </Modal.Footer>
             </Modal>
-            
-
-
         </div>
 
 

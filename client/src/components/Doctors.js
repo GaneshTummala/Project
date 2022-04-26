@@ -2,23 +2,17 @@ import ContactDirectory from '../components/ContactDirectory';
 import SearchBox from '../components/SearchBox';
 import Scroll from '../components/Scroll';
 import {useEffect, useState} from 'react';
-
+import avatarsF from '../avatars';
 
 function Doctors( { loggedState } ) {
 
-    const [avatars, setAvatars] = useState([]);
+    const [avatars, setAvatars] = useState(avatarsF);
     const [searchField, setSearchField] = useState("");
 
     let filteredNames = [];
     
 
-    console.log(avatars)
-    for(let i=0; i < avatars.length; i++){
-        // console.log(avatars[i])
-        if(avatars[i].profession.toLowerCase().includes(searchField.toLowerCase())){
-            filteredNames.push(avatars[i]);
-        }
-    }
+
 
     //Event function
     const onSearchChange = (event) => {
@@ -26,37 +20,48 @@ function Doctors( { loggedState } ) {
     }
 
     useEffect(() => {
-        // console.log("useEffect called....", avatars);
-        fetch("http://localhost:5000/api/doctors/")
-        .then(response => response.json())
-        .then(doctors => setAvatars(doctors));
-        // setAvatars(avatars)
-    }, []);
+        console.log("useEffect called....", avatars);
+        fetch('http://localhost:2000/api/doctors/')
+        .then(response => {response.json();console.log('response',response)})
+        // .then(doctors => setAvatars(doctors));
+        
+        //  setAvatars(avatars)
+    }, [avatars]);
+
+    for(let i=0; i < avatars?.length; i++){
+        console.log(avatars[i])
+        if(avatars[i].profession.toLowerCase().includes(searchField.toLowerCase())){
+            filteredNames.push(avatars[i]);
+        }
+    }
 
     return (
         <div className = "tc vh-100 dt w-100 mb5">
-            {/* <SearchBox searchChange = {onSearchChange}/> */}
+             <SearchBox searchChange = {onSearchChange}/> 
             <div class="row">
                 <div class="col-lg-12 card-margin">
                     <div class="card search-form">
                         <div class="card-body p-0">
-                            {/* <form id="search-form"> */}
+                             <form id="search-form"> 
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="row no-gutters">
                                             <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                                                 <select class="form-control" id="exampleFormControlSelect1" onChange={onSearchChange}>
                                                    
-                                                   {
-                                                       avatars.map(avatar => {
+                                                   {/* {
+                                                       avatars && avatars.map(avatar => {
+                                                           console.log('profession',avatar.profession)
                                                            return <option> {avatar.profession}</option>
                                                        })
-                                                   }
-                                                    {/* <option>Dentist</option>
+                                                   } */}
+                                                   {/* {console.log(avatars)} */}
+                                                   
+                                                     <option>Dentist</option>
                                                     <option>Nutrionist</option>
                                                     <option>Cardiologist</option>
                                                     <option>Neurologist</option>
-                                                    <option>Physician</option> */}
+                                                <option>Physician</option>
                                                 </select>
                                             </div>
                                             <div class="col-lg-8 col-md-6 col-sm-12 p-0">
@@ -70,7 +75,7 @@ function Doctors( { loggedState } ) {
                                         </div>
                                     </div>
                                 </div>
-                            {/* </form> */}
+                            </form> 
                         </div>
                     </div>
                 </div>

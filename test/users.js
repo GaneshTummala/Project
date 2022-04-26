@@ -79,7 +79,7 @@ describe("POST /api/register/", () => {
 // //TEST PATCH ROUTES
 describe("PATCH /api/users/:id", () => {
     it("It should update a user given user ID ", (done) => {
-        const uid = "6076428be45aff9c50515dbc"
+        const uid = "62539ee523f1a009ec588144"
         const user = {
             "mobile": 5126186687
         };
