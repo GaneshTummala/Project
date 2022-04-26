@@ -11,13 +11,13 @@ function Contact() {
        <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <input type="text" name="txtName" class="form-control" placeholder="Your Name" value="" />
+                    <input type="text" name="txtName" class="form-control" placeholder="Your Name" />
                 </div>
                 <div class="form-group">
-                    <input type="text" name="txtEmail" class="form-control" placeholder="Your Email *" value="" />
+                    <input type="text" name="txtEmail" class="form-control" placeholder="Your Email *" />
                 </div>
                 <div class="form-group">
-                    <input type="text" name="txtPhone" class="form-control" placeholder="Your Phone Number *" value="" />
+                    <input type="text" name="txtPhone" class="form-control" placeholder="Your Phone Number *" />
                 </div>
                 <div class="form-group">
                     <Link to="/Greeting" type="submit" name="btnSubmit" className="btn btn-primary btn-sm" > Send Message </Link>

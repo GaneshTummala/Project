@@ -4,16 +4,17 @@ import 'font-awesome/css/font-awesome.min.css';
 import {Link} from 'react-router-dom';
 
 function Contact(props){
-  console.log("Logged state in contact ",props.loggedState)
-  return (
+  console.log("Logged state in contact ",props)
+  return (  
     <div className="col-sm-4 mh-25">
       <div className="box-info text-center user-profile-2">
         <div className="header-cover">
           <img src="https://picsum.photos/640/480" alt="User cover"/>
         </div>
         <div className="user-profile-inner">
+          {console.log('props',props)}
           <br></br>
-          <img src={`https://avatars.dicebear.com/api/avataaars/:${props.id}.svg`} className="rounded-circle profile-avatar" alt="User avatar"/>
+          {/* <img src={'https://avatars.dicebear.com/api/avatars/:${props.id}.svg'} className="rounded-circle profile-avatar" alt="User avatar"/> */}
           <h5>Dr. {props.name}</h5>
           <p>{props.profession}</p>
           <p>United States</p>
@@ -34,6 +35,7 @@ function Contact(props){
                     className="btn btn-primary btn-sm btn-block">
                     <i className="fa fa-envelope">
                     </i> Book Appointment
+                    {console.log('props.avail',props.availability)}
                   </Link>
                   :
                   <div></div>

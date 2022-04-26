@@ -96,7 +96,7 @@ function App() {
        </Switch>
        <div className="bg-black-80  pa4">
             <h2 className="fw1 tc white-90">One Health System </h2>
-            <p className="fw1 tc white-90">Copyright © 2021, One Health System. All rights reserved.</p>
+            <p className="fw1 tc white-90">Copyright © 2022, One Health System. All rights reserved.</p>
         </div>
      </Provider>
   

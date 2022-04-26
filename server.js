@@ -12,11 +12,8 @@ const cors = require('cors')
 app.use(express.json());
 app.use(bodyParser.json());
 
-
-
-
 // 1.2 Connect to DB
-mongoose.connect('mongodb+srv://ohsfron_app:12345qwerty@cluster0.qhw2d.mongodb.net/ohs', function(err) {
+mongoose.connect('mongodb+srv://ohsfront:1234@cluster0.0djro.mongodb.net/test', function(err) {
   if (err) {
       console.err(err);
   } else {
@@ -85,12 +82,12 @@ app.use("/api/updatePasswordViaEmail", up);
 
 
 // 3. Start server
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 2000;
 const server = app.listen(port, () => {
   console.log("Server listening on port ", port);
 });
 
-
+ 
 
 
 

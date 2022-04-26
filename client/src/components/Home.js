@@ -66,7 +66,7 @@ return (
     
 
     {/* Cardsss */}
-    {/* <div className="row row-cols-1 row-cols-md-4 g-4 pa5">
+     <div className="row row-cols-1 row-cols-md-4 g-4 pa5">
         <div className="col">
             <div className="card h-100">
             <img src="https://ca-times.brightspotcdn.com/dims4/default/ae6c31a/2147483647/strip/true/crop/2048x1413+0+0/resize/840x580!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fb1%2F8c%2F31c2c9db81c475a39018fae24c0f%2Fla-1543947916-p4eu2k4wd4-snap-image" className="card-img-top"  height="173" alt="dentist"/>
@@ -103,7 +103,7 @@ return (
             </div>
             </div>
         </div>
-    </div> */}
+    </div> 
     {/* Articles from health experts */}
     <div className="container-xxl pa4">
         <div className="row pl6 pr3">

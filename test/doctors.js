@@ -19,7 +19,7 @@ describe('Doctors API ', () => {
             .end((error, response) => {
                 response.should.have.status(200);
                 response.body.should.be.a('array');
-                response.body.length.should.be.eq(15);
+                response.body.length.should.be.eq(1);
             done();
             })
         })
@@ -31,7 +31,7 @@ describe('Doctors API ', () => {
 
 describe("GET /api/doctors/:id", () => {
     it("It should get doctor by doctor ID ", (done) => {
-        const did = "607a25cd7d53bf68d31c5ba4"
+        const did = "625c7642a6b27805a33c619c"
         chai.request(server)
         .get("/api/doctors/"+did)
         .end((error, response) => {
@@ -69,7 +69,7 @@ describe("GET /api/doctors/:id", () => {
 //TEST PATCH ROUTES
 describe("PATCH /api/doctors/:id", () => {
     it("It should update a doctor given doctor ID ", (done) => {
-        const did = "607a26c17d53bf68d31c5ba5"
+        const did = "625c7642a6b27805a33c619c"
         const doctor = {
             "mobile": 5126186687
         };
